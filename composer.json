@@ -16,7 +16,8 @@
         "symfony/symfony": "2.1.*",
         
         "sonata-project/media-bundle": "dev-master",
-        "sonata-project/doctrine-extensions": "dev-master"
+        "sonata-project/doctrine-extensions": "dev-master",
+        "sonata-project/admin-bundle": "2.1.x-dev"
     },
     "autoload": {
         "psr-0": { "QualityPress\\Bundle\\SocialMediaBundle": "" }
