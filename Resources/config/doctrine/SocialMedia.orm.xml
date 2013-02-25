@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                      xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
+
+    <mapped-superclass name="QualityPress\Bundle\SocialMediaBundle\Entity\SocialMedia" >
+        <field name="name" type="string" nullable="false" length="250" />
+        <field name="enabled" column="is_enabled" type="smallint" nullable="false" />
+        <field name="link" type="string" nullable="true" length="250" />
+        <field name="target" type="string" nullable="false" length="15" />
+        
+        <field name="createdAt" column="created_at" type="datetime" nullable="false" />
+        <field name="updatedAt" column="updated_at" type="datetime" nullable="false" />
+        
+        <one-to-one field="image" target-entity="QualityPress\Bundle\MediaBundle\Entity\Media">
+            <cascade>
+                <cascade-persist />
+            </cascade>
+            <join-column name="media_id" referenced-column-name="id" nullable="true" on-delete="SET NULL" />
+        </one-to-one>
+    </mapped-superclass>
+
+</doctrine-mapping>

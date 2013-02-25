@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    
+    <services>
+        <service id="qualitypress.social_media.entity_manager" factory-service="doctrine" factory-method="getEntityManager" class="Doctrine\ORM\EntityManager" public="false">
+            <argument>%qualitypress.social_media.entity_manager%</argument>
+        </service>
+        
+        <!-- ADMIN -->
+        <service id="admin.social_media" class="%qualitypress.social_media.class.backend%">
+            <tag name="sonata.admin" manager_type="orm" group="admin.group.social_media" label="admin.label.social_media"/>
+            <argument />
+            <argument>%qualitypress.social_media.class.frontend%</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+            
+            <call method="setTranslationDomain">
+                <argument>messages</argument>
+            </call>
+        </service>
+        
+        <!-- Manager -->
+        <service id="qualitypress.social_media.manager" class="%qualitypress.social_media.class.manager%">
+            <argument type="service" id="qualitypress.social_media.entity_manager" />
+            <argument>%qualitypress.social_media.class.frontend%</argument>
+        </service>
+        
+        <!-- Controller -->
+        <service id="qualitypress.social_media.controller" class="%qualitypress.social_media.class.controller%">
+            <argument type="service" id="service_container" />
+            <argument>%qualitypress.social_media.theme.view%</argument>
+        </service>
+        
+        <!-- Twig extension -->
+        <service id="twig.extension.social_media" class="%qualitypress.social_media.class.extension%" public="false">
+            <argument type="service" id="qualitypress.social_media.controller" />
+            <tag name="twig.extension" />
+        </service>
+    </services>
+
+</container>

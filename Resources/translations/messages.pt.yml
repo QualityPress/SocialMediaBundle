@@ -1,0 +1,6 @@
+label:
+    target:
+        blank   : "Página em branco"
+        self    : "Própria página"
+        parent  : "Página pai"
+        top     : "Página principal"

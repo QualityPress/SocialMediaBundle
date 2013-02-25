@@ -1,0 +1,21 @@
+{% if result %}
+    {% autoescape false %}
+        {% spaceless %}
+            <ul class="socialMedias">
+            {% for entity in result %}
+                <li
+                    {% if loop.first %}
+                    class="first"
+                    {% elseif loop.last %}
+                    class="last"
+                    {% endif %}
+                >
+                    <a href="{{ entity.link }}" target="{{ entity.target }}" title="{{ entity.name }}">
+                        {% thumbnail entity.image, 'default' %}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        {% endspaceless %}
+    {% endautoescape %}
+{% endif %}

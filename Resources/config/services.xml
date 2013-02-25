@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:doctrine="http://symfony.com/schema/dic/doctrine">
+
+    <services>
+        <service id="qualitypress.sm.event.prepersist" class="QualityPress\Bundle\SocialMediaBundle\Listener\SocialMediaListener" public="false">
+            <tag name="doctrine.event_listener" event="prePersist" />
+        </service>
+        
+        <service id="qualitypress.sm.event.preupdate" class="QualityPress\Bundle\SocialMediaBundle\Listener\SocialMediaListener" public="false">
+            <tag name="doctrine.event_listener" event="preUpdate" />
+        </service>
+    </services>
+</container>

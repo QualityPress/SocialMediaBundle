@@ -1,0 +1,3 @@
+# Ignorar arquivos específicos
+composer.phar
+/vendor/
