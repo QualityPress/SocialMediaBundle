@@ -16,11 +16,19 @@ class SocialMediaAdmin extends Admin
     protected function configureListFields(\Sonata\AdminBundle\Datagrid\ListMapper $list)
     {
         $list
-            ->addIdentifier('name')
-            ->add('link')
-            ->add('enabled', 'boolean', array('editable' => true))
+            ->addIdentifier('name', null, array(
+                'label'     => 'Nome'
+            ))
+            ->add('link', null, array(
+                'label'     => 'Link'
+            ))
+            ->add('enabled', 'boolean', array(
+                'label'         => 'Habilitado',
+                'editable'      => true
+            ))
             ->add('_action', 'actions', array(
-                'actions' => array(
+                'label'     => 'Ações',
+                'actions'   => array(
                     'view'      => array(),
                     'edit'      => array(),
                     'delete'    => array(),
@@ -35,16 +43,18 @@ class SocialMediaAdmin extends Admin
         $imageRequired = (false === $object->getImage() instanceof \Sonata\MediaBundle\Model\MediaInterface);
                 
         $form
-            ->with('label.general_info')
-                ->add('name')
-                ->add('link', 'url')
+            ->with('Informações Gerais')
+                ->add('name', null, array(
+                    'label'     => 'Nome'
+                ))
+                ->add('link', 'url', array(
+                    'label'     => 'Link'
+                ))
                 ->add('image', 'sonata_media_type', array(
                     'required'  => $imageRequired, 
                     'provider'  => 'sonata.media.provider.image',
                     'context'   => 'midias_sociais',
-                    'label'     => 'admin.label.image'
-                ), array(
-                    'required' => true
+                    'label'     => 'Imagem'
                 ))
                 ->add('target', 'choice', array(
                     'choices' => $this->getSubject()->getTargetOptions()

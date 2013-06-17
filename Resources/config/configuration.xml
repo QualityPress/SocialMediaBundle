@@ -11,7 +11,7 @@
         
         <!-- ADMIN -->
         <service id="admin.social_media" class="%qualitypress.social_media.class.backend%">
-            <tag name="sonata.admin" manager_type="orm" group="admin.group.social_media" label="admin.label.social_media"/>
+            <tag name="sonata.admin" manager_type="orm" group="sonata_media" label="admin.label.social_media"/>
             <argument />
             <argument>%qualitypress.social_media.class.frontend%</argument>
             <argument>SonataAdminBundle:CRUD</argument>
