@@ -43,29 +43,29 @@ class SocialMediaAdmin extends Admin
         $imageRequired = (false === $object->getImage() instanceof \Sonata\MediaBundle\Model\MediaInterface);
                 
         $form
-            ->with('Informações Gerais')
-                ->add('name', null, array(
-                    'label'     => 'Nome'
-                ))
-                ->add('link', 'url', array(
-                    'label'     => 'Link'
-                ))
-                ->add('image', 'sonata_media_type', array(
-                    'required'  => $imageRequired, 
-                    'provider'  => 'sonata.media.provider.image',
-                    'context'   => 'midias_sociais',
-                    'label'     => 'Imagem'
-                ))
-                ->add('target', 'choice', array(
-                    'choices' => $this->getSubject()->getTargetOptions()
-                ))
-                ->add('enabled', 'choice', array(
-                    'choices' => array(
-                        0 => 'Não',
-                        1 => 'Sim'
-                    )
-                ))
-            ->end()
+            ->add('name', null, array(
+                'label'     => 'Nome'
+            ))
+            ->add('link', 'url', array(
+                'label'     => 'Link'
+            ))
+            ->add('image', 'sonata_media_type', array(
+                'required'  => $imageRequired,
+                'provider'  => 'sonata.media.provider.image',
+                'context'   => 'midias_sociais',
+                'label'     => 'Imagem'
+            ))
+            ->add('target', 'choice', array(
+                'label'     => 'Abrir link em',
+                'choices'   => $this->getSubject()->getTargetOptions()
+            ))
+            ->add('enabled', 'choice', array(
+                'label'     => 'Habilitado',
+                'choices'   => array(
+                    0 => 'Não',
+                    1 => 'Sim'
+                )
+            ))
         ;
     }
     
