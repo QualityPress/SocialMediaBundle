@@ -17,7 +17,7 @@
             <argument>SonataAdminBundle:CRUD</argument>
             
             <call method="setTranslationDomain">
-                <argument>messages</argument>
+                <argument>admin</argument>
             </call>
         </service>
         
